@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private PlayerAttack weaponHitbox;
     [SerializeField] private float attackCooldown = 0.4f;
+    [SerializeField] private float attackDistance = 3f;
+
+    private bool attackHeld;
+    private float attackTimer;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
@@ -19,11 +23,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
 
-    private bool attackHeld;
-    private float attackTimer;
-    [SerializeField] private float attackDistance = 3f;
     [SerializeField] private LayerMask enemyLayer;
-
     [SerializeField] private bool isMobile;
 
     private PlayerInput input;
@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
         {
             Attack();
             attackTimer = attackCooldown;
+            
         }
     }
 
@@ -148,17 +149,19 @@ public class PlayerController : MonoBehaviour
 
         if (attackTimer > 0f)
             return;
-
+        
         Ray ray = new Ray(transform.position + Vector3.up, transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, attackDistance, enemyLayer))
         {
             Attack();
             attackTimer = attackCooldown;
+            
         }
     }
 
     private void Attack()
     {
         animator.SetTrigger("Attack");
+        
     }
 }

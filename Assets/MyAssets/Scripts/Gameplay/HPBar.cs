@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHPBar : MonoBehaviour
+public class HPBar : MonoBehaviour
 {
     private Camera mainCamera;
 

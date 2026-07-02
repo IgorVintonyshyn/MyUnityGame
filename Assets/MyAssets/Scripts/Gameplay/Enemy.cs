@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private Transform healthBarCanvas;
     [SerializeField] private Image healthBarFill;
 
     private float currentHealth;

@@ -5,9 +5,10 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private Transform player;     // Посилання на героя
     [SerializeField] private float moveSpeed = 3f; // Швидкість руху
     [SerializeField] private float stopDistance = 1.5f; // Відстань, на якій зупиняється ворог
+    public AudioSource attackSound;
 
     public Animator animator;
-    
+
     private bool isAttacking = false;
 
     private void Start()
@@ -55,11 +56,14 @@ public class EnemyFollow : MonoBehaviour
     public void StartAttack()
     {
         isAttacking = true;
+        attackSound.Play();
     }
 
     public void StopAttack()
     {
         isAttacking = false;
     }
+
+    
 
 }

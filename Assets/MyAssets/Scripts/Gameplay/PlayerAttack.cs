@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public WeaponHitbox weaponHitbox;
+    public AudioSource attackSound;
     [SerializeField] private TrailRenderer swordTrail;
 
     public void EnableHitbox()
@@ -20,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void EnableTrail()
     {
+        attackSound.Play();
         if (swordTrail != null)
         {
             swordTrail.Clear();
